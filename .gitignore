@@ -1,0 +1,6 @@
+.chef/
+.idea/
+.kitchen/
+.profile
+.vagrant/
+Vagrantfile
