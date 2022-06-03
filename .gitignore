@@ -2,5 +2,10 @@
 .idea/
 .kitchen/
 .profile
+.env
+.idea/
+.kitchen/
 .vagrant/
 Vagrantfile
+leriksen.pem
+syntaxcache
