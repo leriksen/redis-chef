@@ -10,3 +10,4 @@ when 'rhel', 'fedora'
   default['redis']['conf_dir'] = '/etc'
   default['redis']['service_name'] = 'redis'
 end
+default['redis']['port'] = 6379
