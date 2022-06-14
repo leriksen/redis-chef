@@ -11,3 +11,5 @@ when 'rhel', 'fedora'
   default['redis']['service_name'] = 'redis'
 end
 default['redis']['port'] = 6379
+default['redis']['group'] = 'redis'
+default['redis']['loguser'] = 'vagrant'

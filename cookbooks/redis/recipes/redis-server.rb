@@ -22,3 +22,10 @@ template File.join(node['redis']['sysconfig_dir'], node['redis']['pkg_name']) do
   mode '0755'
   notifies :restart, "service[#{node['redis']['service_name']}]"
 end
+
+group 'redis' do
+  append true
+  comment 'add me to the redis group so I can read logs'
+  members [ node['redis']['loguser'] ]
+  action :modify
+end
