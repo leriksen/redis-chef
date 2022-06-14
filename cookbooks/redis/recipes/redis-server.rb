@@ -23,9 +23,11 @@ template File.join(node['redis']['sysconfig_dir'], node['redis']['pkg_name']) do
   notifies :restart, "service[#{node['redis']['service_name']}]"
 end
 
-group 'redis' do
+include_recipe 'devops::default'
+
+group node['redis']['group'] do
   append true
-  comment 'add me to the redis group so I can read logs'
-  members [ node['redis']['loguser'] ]
+  comment 'add devops unix user to the redis group so they can read logs'
+  members [ node['accounts']['devops']['unix_user'] ]
   action :modify
 end
