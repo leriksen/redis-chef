@@ -1,1 +1,1 @@
-include_recipe 'redis::redis-server'
+include_recipe 'redis::redis-install'
