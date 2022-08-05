@@ -12,3 +12,5 @@ when 'rhel', 'fedora'
 end
 default['redis']['port'] = 6379
 default['redis']['group'] = 'redis'
+default['redis']['certs_path'] = '/etc/redis/ssl/certs'
+default['redis']['cert_name'] = 'redis-app.redis.australiasoutheast.cloudapp.azure.com'

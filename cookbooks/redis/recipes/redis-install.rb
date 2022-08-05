@@ -31,3 +31,14 @@ group node['redis']['group'] do
   members [ node['accounts']['devops']['unix_user'] ]
   action :modify
 end
+
+directory "#{node['redis']['certs_path']}" do
+  recursive true
+  action :create
+end
+
+file "#{node['redis']['certs_path']}/#{node['redis']['cert_name']}.key" do
+  content 'this is the content'
+  mode '0644'
+  action :create
+end
