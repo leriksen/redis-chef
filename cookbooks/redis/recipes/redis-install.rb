@@ -1,3 +1,12 @@
+execute "reset-redis-modules" do
+  command 'dnf module reset redis -y'
+  cwd 'usr/bin'
+  action :run
+  user 'root'
+  group 'root'
+  live_stream true
+end
+
 execute "enable-redis-6" do
   command 'dnf module enable redis:6 -y'
   cwd 'usr/bin'
