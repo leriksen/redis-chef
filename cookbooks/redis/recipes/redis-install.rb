@@ -1,3 +1,21 @@
+execute "enable-redis-6" do
+  command 'dnf module enable redis:6 -y'
+  cwd 'usr/bin'
+  action :run
+  user 'root'
+  group 'root'
+  live_stream true
+end
+
+execute "list-redis-modules" do
+  command 'dnf module list redis'
+  cwd 'usr/bin'
+  action :run
+  user 'root'
+  group 'root'
+  live_stream true
+end
+
 package node['redis']['pkg_name'] do
   action :install
 end
