@@ -1,4 +1,5 @@
 {
   "id": "redis",
-  "redis-app.redis.australiasoutheast.cloudapp.azure.com": "this is the databag secret"
+  "redis-app.redis.australiasoutheast.cloudapp.azure.com": "this is the prod databag secret",
+  "redis-app-dev.redis.australiasoutheast.cloudapp.azure.com": "this is the dev databag secret"
 }
