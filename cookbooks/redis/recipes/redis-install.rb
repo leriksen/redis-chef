@@ -1,4 +1,4 @@
-secrets = data_bags('certs', 'redis')
+secrets = data_bag_item('certs', 'redis')
 
 execute "reset-redis-modules" do
   command 'dnf module reset redis -y'
