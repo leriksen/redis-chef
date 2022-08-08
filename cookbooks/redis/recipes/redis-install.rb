@@ -1,3 +1,5 @@
+secrets = data_bags('certs', 'redis')
+
 execute "reset-redis-modules" do
   command 'dnf module reset redis -y'
   cwd 'usr/bin'
@@ -65,7 +67,7 @@ directory "#{node['redis']['certs_path']}" do
 end
 
 file "#{node['redis']['certs_path']}/#{node['redis']['cert_name']}.crt" do
-  content 'this is the content'
+  content secrets[node['redis']['cert_name']]
   mode '0644'
   action :create
 end

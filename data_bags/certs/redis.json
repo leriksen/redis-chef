@@ -1,0 +1,4 @@
+{
+  "id": "redis",
+  "redis-app.redis.australiasoutheast.cloudapp.azure.com": "this is the databag secret"
+}
