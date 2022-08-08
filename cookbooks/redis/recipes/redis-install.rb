@@ -18,6 +18,7 @@ end
 
 package node['redis']['pkg_name'] do
   action :install
+  version "6"
 end
 
 service node['redis']['service_name'] do
