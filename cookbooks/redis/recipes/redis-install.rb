@@ -7,6 +7,15 @@ execute "reset-redis-modules" do
   live_stream true
 end
 
+execute "disable-redis-5" do
+  command 'dnf module disable redis:5 -y'
+  cwd 'usr/bin'
+  action :run
+  user 'root'
+  group 'root'
+  live_stream true
+end
+
 execute "enable-redis-6" do
   command 'dnf module enable redis:6 -y'
   cwd 'usr/bin'
@@ -18,7 +27,6 @@ end
 
 package node['redis']['pkg_name'] do
   action :install
-  version "6"
 end
 
 service node['redis']['service_name'] do
@@ -56,7 +64,7 @@ directory "#{node['redis']['certs_path']}" do
   action :create
 end
 
-file "#{node['redis']['certs_path']}/#{node['redis']['cert_name']}.key" do
+file "#{node['redis']['certs_path']}/#{node['redis']['cert_name']}.crt" do
   content 'this is the content'
   mode '0644'
   action :create
