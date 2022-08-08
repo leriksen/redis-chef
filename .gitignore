@@ -10,4 +10,4 @@ Vagrantfile
 leriksen.pem
 syntaxcache
 chef_guid
-.certs_redis_key
+.data_bag_key
