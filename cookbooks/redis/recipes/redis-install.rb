@@ -1,5 +1,3 @@
-secrets = data_bag_item('certs', 'redis')
-
 execute "reset-redis-modules" do
   command 'dnf module reset redis -y'
   cwd 'usr/bin'
@@ -66,18 +64,4 @@ directory "#{node['redis']['certs_path']}" do
   action :create
 end
 
-file "#{node['redis']['certs_path']}/#{node['redis']['cert_name']}.crt" do
-  content secrets[node['redis']['cert_name']]
-  mode '0644'
-  action :create
-end
-
-
-remote_file "#{node['redis']['certs_path']}/#{node['redis']['cert_name']}.key" do
-  source 'https://artifactoryredis.blob.core.windows.net/data/cert_content.txt'
-  mode '0644'
-  owner 'redis'
-  group 'redis'
-  checksum '69b65693ac9eff89e42e68a5110970df7508a525cc86c5647cc1c3253df7c670'
-  action :create
-end
+include_recipe 'redis::redis-cert-update'
