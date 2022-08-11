@@ -1,9 +1,0 @@
----
-document: modulemd-defaults
-version: 1
-data:
-        module: redis
-        stream: "6"
-        profiles:
-                5: [common]
-                6: [common]
