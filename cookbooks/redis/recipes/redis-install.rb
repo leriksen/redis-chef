@@ -34,11 +34,19 @@ service node['redis']['service_name'] do
   action [ :enable, :start ]
 end
 
+# secret is needed for config
+secrets = data_bag_item('certs', 'redis')
+
 template File.join(node['redis']['conf_dir'], 'redis.conf') do
   source 'redis.conf.erb'
   owner 'root'
   group 'root'
   mode '0644'
+  variables (
+    {
+      password: secrets['redis-password']
+    }
+  )
   notifies :restart, "service[#{node['redis']['service_name']}]"
 end
 
