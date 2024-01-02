@@ -6,8 +6,9 @@ Vagrant.configure("2") do |config|
   config.vm.provider :azure do |azure, override|
     azure.vm_name              = "redis"
     azure.admin_username       = "vagrant"
-#     azure.vm_image_urn         = "Canonical:UbuntuServer:18.04-LTS:latest"
-    azure.vm_image_urn         = "RedHat:RHEL:86-gen2:latest"
+    azure.vm_size              = "Standard_B2s"
+    azure.vm_image_urn         = "Canonical:0001-com-ubuntu-server-jammy:22_04-lts-gen2:latest"
+#     azure.vm_image_urn         = "RedHat:RHEL:86-gen2:latest"
 
     azure.resource_group_name  = "testing"
     azure.virtual_network_name = "testing-vnet"
@@ -23,10 +24,10 @@ Vagrant.configure("2") do |config|
     azure.subscription_id = ENV['AZURE_SUBSCRIPTION_ID']
   end
 
-  config.vm.provision "yum update", type: "shell", inline: <<-SHELL
-    echo "Running 'yum -y update'"
-#       apt-get update
-    yum -y update
-  SHELL
+#   config.vm.provision "apt-get update", type: "shell", inline: <<-SHELL
+#     echo "Running 'apt-get -y update'"
+#     apt-get update
+#     yum -y update
+#   SHELL
 end
 

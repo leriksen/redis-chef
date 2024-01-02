@@ -1,3 +1,21 @@
+# Getting started
+
+1. install az cli
+1. az login
+1. az account set -s <subid>
+1. az ad sp create-for-rbac --role="Contributor" --subscription="/subscriptions/<subid>"
+1. update .env
+1. source .env
+1. install vagrant
+1. vagrant box add azure https://github.com/azure/vagrant-azure/raw/v2.0/dummy.box --provider azure
+1. vagrant plugin install vagrant-azure
+1. vagrant up --provider=azure
+1. vagrant ssh
+1. ...
+1.  vagrant down
+1. install terraform
+1. install chef
+
 # The chef-repo
 
 All installations require a central workspace known as the chef-repo. This is a place where primitive objects--cookbooks, roles, environments, data bags, and chef-repo configuration files--are stored and managed.
